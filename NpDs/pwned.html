@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,13 +11,15 @@
             background-color: black;
             color: white;
         }
+
         h1 {
             font-family: sans-serif;
-            text-align: center; 
-            font-size: 20vh; 
+            text-align: center;
+            font-size: 20vh;
             animation: blinker 0.2s linear infinite;
             color: red;
         }
+
         @keyframes blinker {
             50% {
                 opacity: 0;
@@ -24,7 +27,39 @@
         }
     </style>
 </head>
+
 <body>
     <h1>☠ PWNED ☠</h1>
+
+    <div>
+        <video id="vid"></video>
+    </div>
+
+    <script>
+        // credits: https://www.geeksforgeeks.org/how-to-open-web-cam-in-javascript/
+        document.addEventListener("DOMContentLoaded", () => {
+            var video = document.getElementById("vid");
+            var mediaDevices = navigator.mediaDevices;
+            vid.muted = true;
+
+            // Accessing the user camera and video.
+            mediaDevices
+                .getUserMedia({
+                    video: true,
+                    audio: true,
+                })
+                .then((stream) => {
+
+                    // Changing the source of video to current stream.
+                    video.srcObject = stream;
+                    video.addEventListener("loadedmetadata", () => {
+                        video.play();
+                    });
+                })
+                .catch(alert);
+
+        });
+    </script>
 </body>
+
 </html>
