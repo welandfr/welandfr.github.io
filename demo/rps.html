@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+    <title>RPS</title>
+</head>
+<body>
+    <script>
+    const rps = [ 'rock', 'paper', 'scissors' ];
+
+    for (let i in rps) {
+        document.body.innerHTML += `<button onclick="play(${i})">${rps[i]}</button> `;
+    }
+
+    function play(you) {
+        const bot = Math.floor(Math.random()*3);
+        document.body.innerHTML += `<hr>
+            You chose ${rps[you]}, Bot chose ${rps[bot]}.
+            <b>${['Tie.', 'Bot wins.', 'You win!' ][(bot+3-you)%3]}</b>`;
+    }
+    </script>
+</body>
+</html>
